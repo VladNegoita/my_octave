@@ -1,0 +1,81 @@
+//Copyright 2021 311CA Vlad Negoita <vlad1negoita@gmail.com>
+README - my_octave
+
+
+Part I
+
+First of all, it is important to present the structure used:
+struct matrix. It contains the following members:
+- **a -> address to the the matrix (2D array)
+- lines, columns -> the number of lines and columns
+- sum -> the sum of the elements in the matrix
+
+-----------------------------------------------------------------------------
+
+Part II
+
+Second of all, it is necessary to present the main() function:
+It starts with a while loop used for reading the operations
+(one character each time). At each step, we check if the parameters
+are correct and we execute it (usually we use a function). The loop
+ends when we receive a 'Q' command (suggestively named - after quit).
+
+
+-----------------------------------------------------------------------------
+
+Part III
+
+The third part describes the functionality of the program: is it
+useful? In this program the implemented operations are:
+
+1. 'L' -> adding a new matrix
+	This operation is the effective base of the program.
+	There are 3 useful functions that helps to execute it:
+		-increase_size() -> it help us with the resizeable array
+							when we need more elements
+		-alloc_matrix()  -> allocate memory for a matrix
+		-read_matrix()   -> read the elements of a matrix
+
+2. 'D' -> print the dimensions of a matrix
+	For this operation, it is enough to print the associated
+	dimensions for a matrix (lines and columns).
+
+3. 'P' -> print the elements of a matrix
+	Only a function called print_matrix() was used.
+
+4. 'C' -> cut (resizes) a matrix
+	The job was done by resize() function.
+
+5. 'M' -> multiply two matrices
+	We used a multiply() function that returns a struct matrix element
+	Complexity: O(M * N * P) where:
+		The first matrix has M lines and N columns
+		The second matrix has N lines and P columns
+		The result is a matrix with M lines and P columns
+
+6. 'O' -> sorting the array of matrixes ascending (the criteria is the 
+	sum of the elements of the matrix modulo MOD).
+	Complexity: O(N * log(N)) -> Algorithm = Merge_Sort
+	Function used: merge_sort()
+
+7. 'T' -> transpose a matrix
+	The job was done by transpose() function.
+
+8. 'F' -> delete a matrix
+	It uses the decrease_size() and free_matrix() functions.
+
+9. 'Q' -> quit (also free the whole memory)
+	It uses the free_matrix() function and close the whole program.
+
+10. 'S' -> Strassen algorithm for matrix multiplication
+	For this algorithm, the following were necessary:
+		-strassen() recursive function -> returns the product (result)
+		-matrix_add() -> returns the matrix representing the sum or the
+						substraction of two given matrices
+		-matrix_to_blocks() -> function that copies the values from a matrix
+								in 4 smaller matrices (named blocks)
+	Complexity: O(n ^ log2(7)) ~ O(n ^ 2.8) for two matrices of size n x n
+
+
+
+
